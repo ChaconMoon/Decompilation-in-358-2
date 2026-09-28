@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KHDays · Tarjeta del día del reto</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Nunito:wght@800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos separados -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/controls.css">
+</head>
+<body>
+<div class="wrap">
+
+  <h1>KHDays · Tarjeta del día</h1>
+  <p class="sub">
+    Plantilla para LinkedIn y redes, en el estilo de la pantalla de día de 358/2&nbsp;Days.
+    El número se calcula solo desde la fecha de inicio.
+  </p>
+
+  <!-- ── Tarjeta ── -->
+  <div class="stage" id="stage">
+    <div class="card" id="card"></div>
+  </div>
+
+  <!-- ── Controles ── -->
+  <div class="panel">
+    <div class="grid">
+
+      <div>
+        <label for="start">Fecha de inicio</label>
+        <input type="date" id="start" value="2026-09-27">
+      </div>
+
+      <div>
+        <label for="today">Fecha a mostrar</label>
+        <input type="date" id="today">
+      </div>
+
+      <div>
+        <label for="dayov">Día (auto, editable)</label>
+        <input type="number" id="dayov" min="1" max="359">
+      </div>
+
+      <div>
+        <label for="phase">Fase</label>
+        <select id="phase">
+          <option>Fase 0 · Cimientos de C</option>
+          <option>Fase 1 · Comprendiendo la decompilación</option>
+          <option>Fase 2 · Primer Match</option>
+          <option>Fase 3 · Probando a decompilar</option>
+          <option>Fase 4 · Documentando la decompilación</option>
+          <option>Fase 5 · Revisar el Kingdom Hearts 358/2 days</option>
+        </select>
+      </div>
+
+      <div class="full">
+        <label for="ttl">Subtítulo del día (como "Por qué luchar")</label>
+        <input id="ttl" value="Del Hello World a las funciones">
+      </div>
+
+      <div class="full">
+        <label class="chk">
+          <input type="checkbox" id="showph" checked>
+          Mostrar la fase bajo el corazón
+        </label>
+      </div>
+
+      <div class="full">
+        <label for="pts">Lo aprendido (para el texto de la publicación; una línea por punto)</label>
+        <textarea id="pts">Guía de Beej: capítulos 1–4 completados
+Variables, operadores y control de flujo en C
+Funciones y paso por valor</textarea>
+      </div>
+
+      <div class="full">
+        <label>Formato</label>
+        <div class="seg" id="fmt">
+          <button data-f="li" class="on">LinkedIn 1200×627</button>
+          <button data-f="sq">Cuadrado 1080×1080</button>
+        </div>
+      </div>
+
+    </div>
+    <p class="tip">
+      Para guardar la imagen, haz una captura de la tarjeta (captura de pantalla en móvil,
+      herramienta de recorte en escritorio).
+    </p>
+  </div>
+
+  <!-- ── Texto para publicación ── -->
+  <div class="panel">
+    <div class="row">
+      <strong>Texto para la publicación</strong>
+      <button id="copy">Copiar</button>
+    </div>
+    <div class="post" id="post"></div>
+  </div>
+
+</div><!-- /.wrap -->
+
+<script src="js/card.js"></script>
+</body>
+</html>

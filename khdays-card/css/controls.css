@@ -1,0 +1,125 @@
+/* ============================================================
+   controls.css — panel de controles, campos, botones, texto
+   ============================================================ */
+
+/* ── Panel contenedor ── */
+.panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 18px;
+}
+
+/* ── Grid de controles ── */
+.grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+}
+
+.full {
+        grid-column: 1 / -1;
+}
+
+/* ── Etiquetas e inputs ── */
+label {
+        display: block;
+        font-size: .78rem;
+        color: var(--muted);
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+}
+
+input,
+select,
+textarea {
+        width: 100%;
+        font: inherit;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 10px;
+}
+
+input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+}
+
+textarea {
+        min-height: 84px;
+        resize: vertical;
+}
+
+/* ── Checkbox label ── */
+.chk {
+        display: flex;
+        align-items: center;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: .9rem;
+        color: var(--ink);
+}
+
+/* ── Segmented control (formato) ── */
+.seg {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+}
+
+.seg button {
+        font: inherit;
+        cursor: pointer;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 14px;
+}
+
+.seg button.on {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+}
+
+/* ── Tip de captura ── */
+.tip {
+        color: var(--muted);
+        font-size: .85rem;
+        margin-top: 12px;
+        line-height: 1.45;
+}
+
+/* ── Panel de texto de publicación ── */
+.post {
+        white-space: pre-wrap;
+        background: var(--bg);
+        border: 1px dashed var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        font-size: .9rem;
+        line-height: 1.5;
+}
+
+.row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+}
+
+.row button {
+        font: inherit;
+        cursor: pointer;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 6px 12px;
+}

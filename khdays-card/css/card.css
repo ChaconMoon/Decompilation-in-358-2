@@ -1,0 +1,92 @@
+/* ============================================================
+   card.css — estilos del escenario y de la tarjeta visual
+   ============================================================ */
+
+/* ── Escenario (contenedor escalable) ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+.stage {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .35);
+        background: #000;
+}
+
+/* ── Tarjeta (tamaño real, escalada con transform) ── */
+.card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: top left;
+        background: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+/* Cabecera: "DÍA  <número>" */
+.card .head {
+        display: flex;
+        align-items: baseline;
+        width: 84%;
+}
+
+.card .head .d {
+        flex: 1;
+        text-align: right;
+        font-family: Playfair Display SC;
+        font-weight: 700;
+        letter-spacing: .04em;
+        line-height: 1;
+}
+
+.card .head .d small {
+        font-size: .78em;
+}
+
+.card .head .gap {
+        flex: none;
+}
+
+.card .head .n {
+        flex: 1;
+        text-align: left;
+        font-family: Playfair Display SC;
+        font-style: italic;
+        font-weight: 700;
+        line-height: .9;
+}
+
+/* SVGs integrados en la tarjeta */
+.card svg.rule {
+        display: block;
+        width: 84%;
+        height: auto;
+}
+
+.card svg.heart {
+        display: block;
+}
+
+/* Subtítulo del día */
+.card .st {
+        font-family: KHMenu;
+        font-weight: 600;
+        letter-spacing: .03em;
+        text-align: center;
+        max-width: 82%;
+        line-height: 1.15;
+}
+
+/* Fase (caption bajo el corazón) */
+.card .cap {
+        font-family: Cinzel, serif;
+        letter-spacing: .24em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, .55);
+        text-align: center;
+}

@@ -1,0 +1,2 @@
+# Binarios compilados — ignorar todas las carpetas build/ a cualquier profundidad
+**/build/
