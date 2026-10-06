@@ -198,6 +198,61 @@
     } catch (e) {}
   });
 
+  $('export').addEventListener('click', function () {
+    var button = $('export');
+    var status = $('export-status');
+    var card = $('card');
+    var W = SIZES[fmt][0];
+    var H = SIZES[fmt][1];
+    var day = $('dayov').value || '1';
+    var exportCard = card.cloneNode(true);
+
+    if (typeof html2canvas !== 'function') {
+      status.textContent = 'No se pudo cargar el exportador.';
+      return;
+    }
+
+    button.disabled = true;
+    status.textContent = 'Generando imagen…';
+    exportCard.style.position = 'fixed';
+    exportCard.style.left = '-10000px';
+    exportCard.style.top = '0';
+    exportCard.style.transform = 'none';
+    exportCard.style.width = W + 'px';
+    exportCard.style.height = H + 'px';
+    document.body.appendChild(exportCard);
+
+    html2canvas(exportCard, {
+      backgroundColor: '#000',
+      height: H,
+      logging: false,
+      scale: 1,
+      useCORS: true,
+      width: W,
+      windowWidth: W,
+      windowHeight: H
+    }).then(function (canvas) {
+      return new Promise(function (resolve, reject) {
+        canvas.toBlob(function (blob) {
+          if (blob) resolve(blob);
+          else reject(new Error('No se pudo crear el archivo PNG.'));
+        }, 'image/png');
+      });
+    }).then(function (blob) {
+      var link = document.createElement('a');
+      link.download = 'khdays-dia-' + day + '-' + fmt + '.png';
+      link.href = URL.createObjectURL(blob);
+      link.click();
+      URL.revokeObjectURL(link.href);
+      status.textContent = 'Imagen exportada.';
+    }).catch(function () {
+      status.textContent = 'No se pudo exportar la imagen.';
+    }).then(function () {
+      exportCard.remove();
+      button.disabled = false;
+    });
+  });
+
   window.addEventListener('resize', scale);
 
   /* Espera a las fuentes antes de la primera renderización */

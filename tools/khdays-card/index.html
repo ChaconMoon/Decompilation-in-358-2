@@ -50,12 +50,11 @@
       <div>
         <label for="phase">Fase</label>
         <select id="phase">
-          <option>Fase 0 · Cimientos de C</option>
-          <option>Fase 1 · Comprendiendo la decompilación</option>
-          <option>Fase 2 · Primer Match</option>
-          <option>Fase 3 · Probando a decompilar</option>
-          <option>Fase 4 · Documentando la decompilación</option>
-          <option>Fase 5 · Revisar el Kingdom Hearts 358/2 days</option>
+          <option>Fase 0 · Cimientos de C y Memoria</option>
+          <option>Fase 1 · Lectura de Decompilaciones</option>
+          <option>Fase 2 · Matching Decompilation</option>
+          <option>Fase 3 · Librerías Gráficas (SDL)</option>
+          <option>Fase 4 · Port Nativo a PC</option>
         </select>
       </div>
 
@@ -86,10 +85,14 @@ Funciones y paso por valor</textarea>
         </div>
       </div>
 
+      <div class="full export-row">
+        <button id="export" class="export-btn">Exportar imagen PNG</button>
+        <span id="export-status" class="export-status" aria-live="polite"></span>
+      </div>
+
     </div>
     <p class="tip">
-      Para guardar la imagen, haz una captura de la tarjeta (captura de pantalla en móvil,
-      herramienta de recorte en escritorio).
+      La imagen se exporta con el tamaño completo del formato elegido, sin capturar la interfaz.
     </p>
   </div>
 
@@ -104,6 +107,7 @@ Funciones y paso por valor</textarea>
 
 </div><!-- /.wrap -->
 
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="js/card.js"></script>
 </body>
 </html>

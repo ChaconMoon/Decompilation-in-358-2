@@ -1,2 +1,10 @@
-# Binarios compilados — ignorar todas las carpetas build/ a cualquier profundidad
+# Binarios compilados y directorios build
 **/build/
+*.o
+*.out
+*.exe
+
+# IDE y temporales
+.DS_Store
+*.swp
+*~
