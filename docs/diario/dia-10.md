@@ -1,6 +1,9 @@
 # Diario de Aprendizaje · Día 10
+
 **Fecha**: 6 de Octubre de 2026  
+
 **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel  
+
 **Módulo / Proyecto**: `fase-0-fundamentos-c/proyectos/p3-runlog`
 
 ---

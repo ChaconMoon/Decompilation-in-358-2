@@ -36,6 +36,16 @@
   - `platform/pc/`: Runtime nativo para Linux/Windows.
   - `platform/3ds`: Port específico para Nintendo 3DS (homebrew).
 
+### 3. Proyecto Objetivo de Formación: *Yo-kai Watch 2: Mentespectros* (Nintendo 3DS)
+- **Desarrollador / Plataforma**: Level-5 / Nintendo 3DS (arquitectura **ARM11 MPCore / ARMv6K**).
+- **Rol en el reto**: Proyecto propio e independiente de Carlos para aprender y aplicar ingeniería inversa y decompilación real.
+- **Canales de publicación previstos**: Plataforma colaborativa [decomp.dev](https://decomp.dev/) y scratches interactivos en [decomp.me](https://decomp.me/).
+- **Ecosistema técnico**:
+  - Formato contenedor: ROM legítima dumpeada por el usuario (`.3ds` / `.cia` / ExeFS).
+  - Binario ejecutable: `code.bin` (descomprimido de ExeFS) y cabecera de extensión `exheader.bin`.
+  - Herramientas de análisis: Ghidra / IDA Pro / Capstone (ARMv6K), `ctrtool`, scripts Python para desempaquetado de formatos de Level-5.
+  - Sinergia pedagógica: `khdays-decomp` (NDS) actúa como el laboratorio guiado y maduro de referencia, mientras que *Yo-kai Watch 2* es el proyecto pionero donde Carlos aplica de forma práctica cada lección.
+
 ---
 
 ## 🎯 Objetivos del Reto
