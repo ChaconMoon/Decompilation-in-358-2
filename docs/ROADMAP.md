@@ -17,7 +17,7 @@ Este documento es tu **tablero de mando diario**. Aplica la filosofía de **Háb
 ## Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 > Guía detallada: [docs/temario/00-fundamentos-c-y-memoria.md](temario/00-fundamentos-c-y-memoria.md)
 
-### Bloque 0.1: Repaso y Cierre de Fundamentos (Estado: ~80%)
+### Bloque 0.1: Repaso y Cierre de Fundamentos (Estado: 100% Completado ✅)
 - [x] **0.1.1** Instalar GCC, Make y configurar `.vscode/tasks.json` en Linux.
 - [x] **0.1.2** Escribir `helloworld` y verificar compilación con `-Wall -Wextra`.
 - [x] **0.1.3** Manipular variables de tipos primitivos (`int`, `float`, `char`) e imprimir tamaños con `sizeof` y `%zu`.
@@ -30,10 +30,10 @@ Este documento es tu **tablero de mando diario**. Aplica la filosofía de **Háb
 - [x] **0.1.10** Matrices bidimensionales: declarar e indexar arrays 2D (`matrix[fila][col]`).
 - [x] **0.1.11** Proyecto 1 completado: Analizador de sensores meteorológicos.
 - [x] **0.1.12** Proyecto 2 completado: Módulo de calificación de respuestas.
-- [ ] **0.1.13 (Micro-reto)** En `runlog` (`fase-0-fundamentos-c/proyectos/p3-runlog`): Implementar `void calculate_averange(float (*array)[INTENTOS])` calculando la media ignorando los valores `-1`.
+- [x] **0.1.13 (Micro-reto)** En `runlog` (`fase-0-fundamentos-c/proyectos/p3-runlog`): Implementar `void calculate_averange(float (*array)[INTENTOS])` calculando la media ignorando los valores `-1`.
 - [x] **0.1.14 (Micro-reto)** En `runlog`: Implementar `void calculate_ranking(float (*array)[INTENTOS])` generando un array auxiliar de índices ordenados por mejor tiempo.
 - [x] **0.1.15 (Micro-reto)** En `runlog`: Implementar `void intercambiar(float *a, float *b)` y usarla en un algoritmo de ordenamiento sobre una copia local.
-- [ ] **0.1.16 (Hito de Graduación Bloque 0.1)**: Compilar `runlog` con `gcc -Wall -Wextra -Werror` con cero advertencias y verificar ejecución interactiva.
+- [x] **0.1.16 (Hito de Graduación Bloque 0.1)**: Compilar `runlog` con `gcc -Wall -Wextra -Werror` con cero advertencias y verificar ejecución interactiva.
 
 ### Bloque 0.2: Cadenas, Structs, Enums y Alineación de Memoria
 - [ ] **0.2.1** Escribir un programa que demuestre el terminador nulo `\0` en arrays de `char`.
