@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Estandarización del blog de desarrollo, creación de la skill devlog-reviewer y preparación del lanzamiento en Substack.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-13.png" width="100%" alt="day-13 card">
 
 *(Escribe aquí tus reflexiones, vivencias y conclusiones de la jornada...)*

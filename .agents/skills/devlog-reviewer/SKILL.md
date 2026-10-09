@@ -36,7 +36,6 @@ Toda entrada revisada debe cumplir con este esquema de cabeceras y bloques:
 - **Objetivo general de la sesión**: {Meta global de la sesión de trabajo}
 - **Fase**: {Nombre de la fase activa, ej: Fase 0 · Cimientos de C y Memoria de Bajo Nivel}
 
-### Entrada del diario:
 <img src="./diario-images/day-{N}.png" width="100%" alt="day-{N} card">
 
 {Cuerpo del post:
@@ -78,7 +77,7 @@ Cuando el usuario comparta un borrador de entrada o pida revisar un archivo de `
 ### Dimensión 1: Auditoría de Formato y Estructura
 - [ ] ¿El título sigue exactamente `Diario de aprendiendo a decompilar en 358/2 dias - Dia {N}: ({Titulo})`?
 - [ ] ¿El bloque `### Info:` incluye Fecha, Objetivo general y Fase?
-- [ ] ¿Existe la etiqueta `### Entrada del diario:` y contiene la referencia a la tarjeta gráfica `day-{N}.png` (o captura complementaria en `post-images/`)?
+- [ ] ¿Contiene la referencia a la tarjeta gráfica `day-{N}.png` (o captura complementaria en `post-images/`) inmediatamente tras el bloque Info?
 - [ ] ¿La `Checklist:` usa casillas markdown `[x]` con tareas claras?
 - [ ] ¿Se incluyen `Tags:` al final con hashtags pertinentes (`#DecompilandoEn358Dias`, `#BajoNivel`, `#NintendoDS`, etc.)?
 

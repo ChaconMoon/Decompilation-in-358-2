@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Presentación del reto #DecompilandoEn358Dias, motivación fundacional y principios éticos.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 ***Esta entrada del diario está siendo escrita de forma "retroactiva" puesto que el diario de este proyecto empezó a partir del día 2, por lo que esta entrada es una representación de cómo me sentía en ese momento, espero que les guste.***
 
 <img src="./diario-images/day-1.png" width="100%" alt="day-1 card">

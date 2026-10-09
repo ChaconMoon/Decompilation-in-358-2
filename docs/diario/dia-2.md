@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Primeros pasos en C: variables primitivas, tamaño en RAM y control de flujo.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-2.png" width="100%" alt="day-2 card"/>
 
 Empieza mi viaje en el mundo de la decompilación, desde mi desconocimiento tengo más o menos un *roadmap* de lo que tengo que hacer, antes de mirar ensamblador, estudiar arquitectura de una consola necesito aprender C y de paso programación a bajo nivel, aunque se programar la programación a bajo nivel es otro mundo, es dar instrucciones muy claras, ya que estas trabajando directamente sobre la memoria RAM del equipo, cuando cree un int tengo que saber, vale, esto ocupa 4 bytes en la memoria RAM y tengo que leerlo como int, leer un int como un float podría devolver 2123141 en lugar de 6.

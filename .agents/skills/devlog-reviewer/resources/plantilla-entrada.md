@@ -5,7 +5,6 @@
 - **Objetivo general de la sesión**: [Objetivo general conciso]
 - **Fase**: [Fase X · Nombre de la Fase]
 
-### Entrada del diario:
 <img src="./diario-images/day-[NUMERO].png" width="100%" alt="day-[NUMERO] card">
 
 [Texto del post: reflexiones personales, anécdotas, dudas, progreso y explicaciones técnicas de lo aprendido]

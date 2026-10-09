@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Estructuración del proyecto Runlog con matrices y pruebas preliminares del port en 3DS.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-9.png" width="100%" alt="day-9 card">
 
 ***Este día no va a abarcar un solo día si no varios, pero intentaré contar las cosas en orden***

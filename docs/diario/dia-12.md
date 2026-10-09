@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Pipeline de extracción y descompresión de Yo-kai Watch 2 (3DS), arquitectura de newsletter y pulido de entradas.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-12.png" width="100%" alt="day-12 card">
 
 ---

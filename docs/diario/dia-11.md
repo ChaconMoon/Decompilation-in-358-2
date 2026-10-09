@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Cierre del Bloque 0.1: modularización (.h vs .c), include guards y testing con sanitizers.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-11.png" width="100%" alt="day-11 card">
 
 ---

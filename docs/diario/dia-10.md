@@ -5,9 +5,15 @@
 - **Objetivo general de la sesión**: Ordenamiento de matrices 2D en memoria física, intercambio de filas por punteros y blindaje del ranking en Runlog.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-10.png" width="100%" alt="day-10 card">
+
+## Empezando el blog de desarrollo
+
+Esta es una pequeña nota para decir que a partir de aquí estoy investigando cómo hacer esta newsletter y empezar a organizar esto de forma más profesional.
+
+Estoy manejando diferentes alternativas, pero reconozco que las sugerencias de Antigravity ayudan y gracias a ello podré publicar directamente el markdown, con lo que podré conseguir publicar tanto en GitHub a través de la documentación como en una web de forma un poco más formal.
+
+Aunque seguramente me lleve un tiempo dejarlo todo a punto.
 
 ## Aprendiendo Punteros, Matrices y punteros a matrices
 
@@ -101,6 +107,7 @@ Sé que tal vez es muy poco para una entrada del diario, pero creedme: incluso c
 Con esto he terminado el proyecto, listo para testearlo al día siguiente.
 
 Seguiré contando, jeje. ¡Nos vemos en la siguiente entrada del blog!
+
 
 ### Checklist:
 - [x] Implementar correctamente funciones que accedan a punteros dentro de matrices.

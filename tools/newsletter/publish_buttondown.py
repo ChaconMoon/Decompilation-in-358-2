@@ -82,7 +82,10 @@ def extract_metadata_and_body(content, dia_num=None):
     # 1. Eliminar título h1 redundante del cuerpo (Buttondown ya lo muestra como asunto del email)
     body_md = re.sub(r"^# .*\n+", "", content)
 
-    # 2. Transformar rutas relativas de imágenes a URLs públicas raw de GitHub
+    # 2. Eliminar cabecera redundante '### Entrada del diario:' manteniendo la parte de Info
+    body_md = re.sub(r"### Entrada del diario:\s*\n+", "", body_md, flags=re.IGNORECASE)
+
+    # 3. Transformar rutas relativas de imágenes a URLs públicas raw de GitHub
     body_md = re.sub(
         r'src="\./diario-images/([^"]+)"',
         rf'src="{GITHUB_RAW_BASE}diario-images/\1"',
@@ -94,11 +97,11 @@ def extract_metadata_and_body(content, dia_num=None):
         body_md,
     )
 
-    # 3. Transformar checkboxes de GFM a elementos visuales universales para email
+    # 4. Transformar checkboxes de GFM a elementos visuales universales para email
     body_md = re.sub(r"^- \[x\] ", "- ✅ ", body_md, flags=re.M)
     body_md = re.sub(r"^- \[ \] ", "- ⬜ ", body_md, flags=re.M)
 
-    # 4. Formatear tags como badges elegantes
+    # 5. Formatear tags como badges elegantes
     def format_tags(match):
         tags_str = match.group(1).strip()
         found_tags = re.findall(r"#([\w-]+)", tags_str)
@@ -110,7 +113,7 @@ def extract_metadata_and_body(content, dia_num=None):
 
     body_md = re.sub(r"### Tags:\s*\n([^\n]+)", format_tags, body_md)
 
-    # 5. Compilar a HTML limpio
+    # 6. Compilar a HTML limpio
     html_output = markdown.markdown(body_md, extensions=["extra", "sane_lists"])
 
     return subject, tags, html_output, slug
@@ -128,16 +131,18 @@ def upload_draft_to_buttondown(api_key, subject, body, tags, slug=None):
         "User-Agent": "Decomp358-Publisher/1.0",
     }
 
-    # 1. Comprobar si ya existe un borrador con ese slug para actualizarlo (PATCH) en lugar de duplicarlo
+    # 1. Comprobar si ya existe una entrada con ese slug para actualizarla (PATCH) en lugar de duplicarla
     existing_id = None
+    existing_status = None
     if slug:
         try:
-            req = urllib.request.Request(f"{BUTTONDOWN_API_URL}?status=draft", headers=headers)
+            req = urllib.request.Request(BUTTONDOWN_API_URL, headers=headers)
             with urllib.request.urlopen(req) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
                 for item in data.get("results", []):
                     if item.get("slug") == slug:
                         existing_id = item.get("id")
+                        existing_status = item.get("status")
                         break
         except Exception:
             pass
@@ -145,11 +150,15 @@ def upload_draft_to_buttondown(api_key, subject, body, tags, slug=None):
     payload = {
         "subject": subject,
         "body": body,
-        "status": "draft",
         "archival_mode": "archive_only",
     }
     if slug:
         payload["slug"] = slug
+
+    # Si la entrada ya estaba publicada ('sent'), Buttondown rechaza pasarla a 'draft'.
+    # Si es borrador o creación nueva, se asegura el estado 'draft'.
+    if existing_status != "sent":
+        payload["status"] = "draft"
 
     data = json.dumps(payload).encode("utf-8")
 

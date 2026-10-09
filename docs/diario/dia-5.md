@@ -5,8 +5,6 @@
 - **Objetivo general de la sesión**: Funciones en C, paso por referencia y desreferenciación de memoria con punteros.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-### Entrada del diario:
-
 <img src="./diario-images/day-5.png" width="100%" alt="day-5 card">
 
 He seguido avanzando con [la guia de Beej para C](https://beej.us/guide/bgc/) y he terminado los capitulos 4 y 5, que son las funciones y los punteros respectivamente, las funciones son lo tipico de todos los lenguajes de programación, un fragmento de código al que puedes llamar desde otras partes del proyecto, pero creo que lo he entendido.
