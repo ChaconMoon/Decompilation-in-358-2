@@ -193,7 +193,7 @@ def build_newsletter_draft(titulo, hito, dias_info, files_parsed):
     draft.append("---")
     draft.append("")
     draft.append("### 📊 Estado del Reto y Código Fuente")
-    draft.append("- 💻 **Repositorio en GitHub**: [Decompilation in 358-2](https://github.com/) *(Actualizado diariamente)*")
+    draft.append("- 💻 **Repositorio en GitHub**: [Decompilation in 358-2](https://github.com/ChaconMoon/Decompilation-in-358-2) *(Actualizado diariamente)*")
     draft.append("- 🏷️ **Hashtag de seguimiento en redes**: `#DecompilandoEn358Dias`")
     draft.append("")
     draft.append("*¡Nos vemos en la siguiente entrega bajo el capó!*")

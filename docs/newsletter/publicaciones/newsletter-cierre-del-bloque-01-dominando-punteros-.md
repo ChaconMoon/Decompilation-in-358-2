@@ -91,7 +91,7 @@ Aprender decompilación no es cuestión de sentarse 8 horas un fin de semana a l
 ---
 
 ### 📊 Estado del Reto y Código Fuente
-- 💻 **Repositorio en GitHub**: [Decompilation in 358-2](https://github.com/) *(Actualizado diariamente)*
+- 💻 **Repositorio en GitHub**: [Decompilation in 358-2](https://github.com/ChaconMoon/Decompilation-in-358-2) *(Actualizado diariamente)*
 - 🏷️ **Hashtag de seguimiento en redes**: `#DecompilandoEn358Dias`
 
 *¡Nos vemos en la siguiente entrega bajo el capó!*

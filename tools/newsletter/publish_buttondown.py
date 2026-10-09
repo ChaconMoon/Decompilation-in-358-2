@@ -25,6 +25,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 DIARIO_DIR = REPO_ROOT / "docs" / "diario"
 ENV_PATH = REPO_ROOT / ".env"
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ChaconMoon/Decompilation-in-358-2/master/docs/diario/"
+GITHUB_REPO_BLOB = "https://github.com/ChaconMoon/Decompilation-in-358-2/blob/master/"
+GITHUB_REPO_TREE = "https://github.com/ChaconMoon/Decompilation-in-358-2/tree/master/"
 BUTTONDOWN_API_URL = "https://api.buttondown.email/v1/emails"
 
 
@@ -97,7 +99,19 @@ def extract_metadata_and_body(content, dia_num=None):
         body_md,
     )
 
-    # 4. Transformar checkboxes de GFM a elementos visuales universales para email
+    # 4. Transformar enlaces relativos al repositorio a URLs absolutas de GitHub
+    def replace_relative_link(match):
+        text = match.group(1)
+        rel_url = match.group(2)
+        if rel_url.startswith(("http://", "https://", "mailto:", "#")):
+            return match.group(0)
+        clean_path = re.sub(r"^(\.\./)+", "", rel_url).lstrip("./")
+        target_base = GITHUB_REPO_BLOB if "." in Path(clean_path).name else GITHUB_REPO_TREE
+        return f"[{text}]({target_base}{clean_path})"
+
+    body_md = re.sub(r'(?<!\!)\[([^\]]+)\]\(([^)]+)\)', replace_relative_link, body_md)
+
+    # 5. Transformar checkboxes de GFM a elementos visuales universales para email
     body_md = re.sub(r"^- \[x\] ", "- ✅ ", body_md, flags=re.M)
     body_md = re.sub(r"^- \[ \] ", "- ⬜ ", body_md, flags=re.M)
 

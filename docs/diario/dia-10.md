@@ -19,7 +19,7 @@ Aunque seguramente me lleve un tiempo dejarlo todo a punto.
 
 He terminado el proyecto implementando las funciones necesarias. Se me quedó únicamente la función donde me tocaba crear un array auxiliar porque me pedía reordenar una matriz en base a unos criterios; en este caso, se me pedía extraer unos datos en concreto de un array e insertarlos en otro para posteriormente reordenar ese nuevo array. 
 
-Como dije en entradas del blog anteriores, durante la ejecución de este software la finalidad era **no modificar el conjunto de datos original**, por lo que en la función `calculate_ranking` de [`fase-0-fundamentos-c/proyectos/p3-runlog/src/runlog.c`](../../fase-0-fundamentos-c/proyectos/p3-runlog/src/runlog.c) tuve que crear una matriz auxiliar:
+Como dije en entradas del blog anteriores, durante la ejecución de este software la finalidad era **no modificar el conjunto de datos original**, por lo que en la función `calculate_ranking` de [`fase-0-fundamentos-c/proyectos/p3-runlog/src/runlog.c`](https://github.com/ChaconMoon/Decompilation-in-358-2/blob/master/fase-0-fundamentos-c/proyectos/p3-runlog/src/runlog.c) tuve que crear una matriz auxiliar:
 
 ```C
 void calculate_ranking(float (*array)[INTENTOS])
