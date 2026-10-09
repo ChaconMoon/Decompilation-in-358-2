@@ -1,4 +1,11 @@
-# Diario de aprendizaje · Día 1 (La llave que guiará mi destino)
+# Diario de aprendiendo a decompilar en 358/2 dias - Dia 1: (La llave que guiará mi destino)
+
+### Info:
+- **Fecha**: 27 de Septiembre de 2026
+- **Objetivo general de la sesión**: Presentación del reto #DecompilandoEn358Dias, motivación fundacional y principios éticos.
+- **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
+
+### Entrada del diario:
 
 ***Esta entrada del diario está siendo escrita de forma "retroactiva" puesto que el diario de este proyecto empezó a partir del día 2, por lo que esta entrada es una representación de cómo me sentía en ese momento, espero que les guste.***
 
@@ -33,3 +40,9 @@ Mi viaje empieza ahora, mi corazón será mi guía y mis amigos serán mi mejor 
 Nos veremos próximamente.
 
 <img src="https://media1.tenor.com/m/f3qmnHWQSacAAAAC/kingdom-hearts-opening-window.gif" width="100%" alt="Roxas opening the window">
+
+### Checklist:
+- [x] Definición formal del reto de 358/2 días (meta: 21 de septiembre de 2027).
+
+### Tags:
+#DecompilandoEn358Dias #ReverseEngineering

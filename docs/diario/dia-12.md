@@ -1,23 +1,13 @@
-# Diario de Aprendizaje · Día 12
-**Fecha**: 8 de Octubre de 2026  
-**Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel  
-**Módulos**: Proyecto Independiente (*Yo-kai Watch 2*), Newsletter Substack y Fundamentos  
-**Hito**: Integración de Yo-kai Watch 2 (3DS), Arquitectura de Newsletter y Entrada Fundacional Día 1
+# Diario de aprendiendo a decompilar en 358/2 dias - Dia 12: (Newaletter (parte 1))
 
----
+### Info:
+- **Fecha**: 8 de Octubre de 2026
+- **Objetivo general de la sesión**: Pipeline de extracción y descompresión de Yo-kai Watch 2 (3DS), arquitectura de newsletter y pulido de entradas.
+- **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
-## 🎯 Objetivos de la Sesión
-- [x] Commit oficial y cerrado de la jornada previa: `Day-11: Modularización en C, include guards y suite de tests unitarios con sanitizers`.
-- [x] Integración de **_Yo-kai Watch 2: Mentespectros_ (Nintendo 3DS)** como proyecto objetivo independiente de decompilación en [`docs/contexto-proyecto.md`](../contexto-proyecto.md).
-- [x] Reubicación del proyecto a [`fase-2-matching-decomp/yokai-watch-2-decompiled/`](../../fase-2-matching-decomp/yokai-watch-2-decompiled/) con estructura modular (`config/`, `tools/`, `asm/`, `src/`, `include/`, `scratches/`).
-- [x] Implementación del pipeline de extracción en [`tools/extract_rom.py`](../../fase-2-matching-decomp/yokai-watch-2-decompiled/tools/extract_rom.py) y [`Makefile`](../../fase-2-matching-decomp/yokai-watch-2-decompiled/Makefile).
-- [x] Blindaje estricto en `.gitignore` para excluir ROMs (`.3ds`), ejecutables (`.code`, `.bin`, `.raw`) y directorios temporales de Git.
-- [x] Extracción y descompresión verificada de `.code` (4.42 MB) a `extracted/code.raw.bin` (7.38 MB, ARM11 @ `0x00100000`) con FastLZSS.
-- [x] Cálculo y registro del SHA-256 oficial del ejecutable: `b536dfce0a7138f2d5691532604d782b1ea3e20731120cc662baee118c370547`.
-- [x] Inspección de símbolos del motor de Level-5 (`CHARA_BASE_YOKAI_INFO`, `BTL_YOKAI_FAMILY_INFO`, `SoulCombi`, `RWSTDERR`).
-- [x] Definición de la línea editorial híbrida (Semanal + Hitos) para la newsletter pública en [`docs/newsletter/guia-editorial.md`](../newsletter/guia-editorial.md).
-- [x] Implementación y testeo del script de exportación automatizada a Substack en [`tools/newsletter/export_substack.py`](../../tools/newsletter/export_substack.py) con filtrado de notas privadas.
-- [x] Creación, revisión y pulido de la entrada retroactiva del [`docs/diario/dia-1.md`](dia-1.md) ("La llave que guiará mi destino") integrando su tarjeta gráfica en [`docs/diario/diario-images/day-1.png`](diario-images/day-1.png).
+### Entrada del diario:
+
+<img src="./diario-images/day-12.png" width="100%" alt="day-12 card">
 
 ---
 
@@ -44,6 +34,17 @@
 ### 3. Modelo Editorial Híbrido (Bitácora Interna vs Publicación en Substack)
 - **Desacoplamiento**: El diario en `docs/diario/dia-XX.md` sirve como registro técnico atómico diario de 15–45 min sin fricción.
 - **Publicación consolidada**: La newsletter en Substack se alimenta de estas entradas para generar ensayos técnicos semanales o por hitos completados, aportando valor formativo real a la comunidad sin riesgo de saturación.
+
+### Checklist:
+- [x] Integración de Yo-kai Watch 2: Mentespectros (3DS) en la hoja de ruta y contexto de proyecto.
+- [x] Implementación del pipeline de extracción en `tools/extract_rom.py` y `Makefile`.
+- [x] Extracción y descompresión verificada de `.code` (4.42 MB) a `extracted/code.raw.bin` (7.38 MB ARM11 @ `0x00100000`).
+- [x] Cálculo y registro del SHA-256 oficial e inspección de símbolos del motor de Level-5.
+- [x] Definición de la línea editorial híbrida y desarrollo de `tools/newsletter/export_substack.py`.
+- [x] Creación, revisión y pulido de la entrada del Día 1 con su tarjeta gráfica.
+
+### Tags:
+#DecompilandoEn358Dias #Nintendo3DS #ARM11 #FastLZSS #YokaiWatch2 #ReverseEngineering #Newsletter
 
 ---
 

@@ -1,7 +1,7 @@
 # Cierre del Bloque 0.1: Dominando Punteros y Tests Unitarios en C
 *Crónicas de un profesor de FP aprendiendo C a bajo nivel, memoria y decompilación*
 
-> 📅 **Período**: Días 10 al 11 | 🏷️ **Reto**: `#Decompilando358` | 🎯 **Hito**: Bloque 0.1
+> 📅 **Período**: Días 10 al 11 | 🏷️ **Reto**: `#DecompilandoEn358Dias` | 🎯 **Hito**: Bloque 0.1
 
 ---
 
@@ -92,6 +92,6 @@ Aprender decompilación no es cuestión de sentarse 8 horas un fin de semana a l
 
 ### 📊 Estado del Reto y Código Fuente
 - 💻 **Repositorio en GitHub**: [Decompilation in 358-2](https://github.com/) *(Actualizado diariamente)*
-- 🏷️ **Hashtag de seguimiento en redes**: `#Decompilando358`
+- 🏷️ **Hashtag de seguimiento en redes**: `#DecompilandoEn358Dias`
 
 *¡Nos vemos en la siguiente entrega bajo el capó!*

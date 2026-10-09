@@ -1,4 +1,4 @@
-# Guía Editorial: Newsletter del Reto #Decompilando358
+# Guía Editorial: Newsletter del Reto #DecompilandoEn358Dias
 
 Esta guía establece los criterios de redacción, tono y arquitectura de publicación para la newsletter oficial en **Substack**.
 

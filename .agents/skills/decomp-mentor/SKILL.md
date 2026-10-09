@@ -20,7 +20,7 @@ Esta skill proporciona las directrices y herramientas necesarias para acompañar
   - `Yokimitsuro/khdays-decomp`: Decompilación matching byte-exact (NDS, ARM946E-S, `mwccarm 3.0 build 139`, NitroSDK).
   - `Yokimitsuro/khdays-port`: Runtime nativo (C++20, SDL3, Vulkan, `platform/pc/` y `platform/3ds`).
 - **Objetivos y Duración**: Reto simbólico de 358,5 días iniciado el **27 de septiembre de 2026** (Día 1). Meta: aprender matching decompilation, dominar C a bajo nivel, documentar con rigor y construir un wrapper de render con SDL.
-- **Hashtag Oficial**: `#Decompilando358`.
+- **Hashtag Oficial**: `#DecompilandoEn358Dias`.
 - **Documento Maestro**: [`docs/contexto-proyecto.md`](docs/contexto-proyecto.md).
 
 ---

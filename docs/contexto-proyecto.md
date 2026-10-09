@@ -57,7 +57,7 @@
 5. **Meta simbólica**: 358,5 días de dedicación constante.
    - **Inicio oficial**: 27 de Septiembre de 2026 (Día 1).
    - **Fin aproximado**: 21 de Septiembre de 2027.
-6. **Motivación y divulgación continua**: progreso visible día a día mediante `#Decompilando358`, tarjetas visuales de progreso e informes de aprendizaje.
+6. **Motivación y divulgación continua**: progreso visible día a día mediante `#DecompilandoEn358Dias`, tarjetas visuales de progreso e informes de aprendizaje.
 
 ---
 
@@ -76,7 +76,7 @@
 
 - **Día 1 (27/09/2026)**: Inicio oficial del reto de 358,5 días.
 - **Día 2 (28/09/2026)**: Lectura de la *Guía de Beej para C* (caps. 1–4, hasta la pág. 30). Tabla de equivalencias de control de flujo Python → C.
-- **Día 4 (30/09/2026)**: Publicación en LinkedIn con el hashtag **#Decompilando358**. Diseño del concepto de tarjetas de avance diario inspiradas en la pantalla de días de *Kingdom Hearts 358/2 Days*.
+- **Día 4 (30/09/2026)**: Publicación en LinkedIn con el hashtag **#DecompilandoEn358Dias**. Diseño del concepto de tarjetas de avance diario inspiradas en la pantalla de días de *Kingdom Hearts 358/2 Days*.
 - **Día 5 (01/10/2026)**: Estudio de los capítulos 1–6 de Beej (punteros, arrays, memoria, pág. ~60). Planteamiento del proyecto de dificultad media-alta `p3-runlog`.
 - **Punto de inflexión**: Se intentó abordar la primera función real de `khdays-decomp`, pero el salto técnico resultó abrupto. Decisión acertada: afianzar primero los cimientos de C y memoria a bajo nivel antes de decompilar en ARM.
 - **Día 7 (03/10/2026)**: Experimentación en el port para 3DS (`platform/3ds`). La escena de ejemplo funciona. Objetivos pendientes en 3DS:

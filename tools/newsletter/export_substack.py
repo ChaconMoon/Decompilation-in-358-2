@@ -124,7 +124,7 @@ def build_newsletter_draft(titulo, hito, dias_info, files_parsed):
     draft.append(f"# {titulo}")
     draft.append(f"*Crónicas de un profesor de FP aprendiendo C a bajo nivel, memoria y decompilación*")
     draft.append("")
-    draft.append(f"> 📅 **Período**: {rango_dias_str} | 🏷️ **Reto**: `#Decompilando358`" + (f" | 🎯 **Hito**: Bloque {hito}" if hito else ""))
+    draft.append(f"> 📅 **Período**: {rango_dias_str} | 🏷️ **Reto**: `#DecompilandoEn358Dias`" + (f" | 🎯 **Hito**: Bloque {hito}" if hito else ""))
     draft.append("")
     draft.append("---")
     draft.append("")
@@ -194,7 +194,7 @@ def build_newsletter_draft(titulo, hito, dias_info, files_parsed):
     draft.append("")
     draft.append("### 📊 Estado del Reto y Código Fuente")
     draft.append("- 💻 **Repositorio en GitHub**: [Decompilation in 358-2](https://github.com/) *(Actualizado diariamente)*")
-    draft.append("- 🏷️ **Hashtag de seguimiento en redes**: `#Decompilando358`")
+    draft.append("- 🏷️ **Hashtag de seguimiento en redes**: `#DecompilandoEn358Dias`")
     draft.append("")
     draft.append("*¡Nos vemos en la siguiente entrega bajo el capó!*")
 

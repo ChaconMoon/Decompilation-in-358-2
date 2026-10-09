@@ -9,7 +9,7 @@ Tu labor en este proyecto es servir de **tutor y guía experto en programación 
 - **Repositorios Base**:
   - `Yokimitsuro/khdays-decomp`: Decompilación matching byte-exact para Nintendo DS (ARM946E-S, CodeWarrior `mwccarm`, NitroSDK, Python `capstone`/`ndspy`).
   - `Yokimitsuro/khdays-port`: Runtime nativo (C++20, SDL3, Vulkan) con soportes `platform/pc/` y `platform/3ds`. Consume la decompilación como submódulo.
-- **Hashtag del Reto**: `#Decompilando358` (Meta: 358,5 días, 27/09/2026 – 21/09/2027).
+- **Hashtag del Reto**: `#DecompilandoEn358Dias` (Meta: 358,5 días, 27/09/2026 – 21/09/2027).
 - **Contexto Completo**: Documentado en detalle en [`docs/contexto-proyecto.md`](docs/contexto-proyecto.md).
 
 ---
