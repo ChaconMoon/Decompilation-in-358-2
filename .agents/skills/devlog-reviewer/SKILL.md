@@ -114,3 +114,12 @@ Al entregar el feedback de un borrador, el agente responderá con este esquema c
    - Matices de bajo nivel para afinar la precisión conceptual.
 5. **Sugerencias de Pulido (Antes / Después)**: Pequeñas mejoras de redacción propuestas manteniendo 100% las palabras y estilo de Carlos.
 6. **Propuesta Final de Checklist y Tags**: Lista lista para copiar si faltaban o necesitaban afinarse.
+
+---
+
+## 5. Protocolo de Publicación en Plataforma Web (Buttondown)
+
+- **Subida exclusivamente como borrador (`draft`)**: El script [`tools/newsletter/publish_buttondown.py`](file:///mnt/data/3-Programming/Decompilation%20in%20358-2/tools/newsletter/publish_buttondown.py) sube las entradas siempre con `status: draft` y `archival_mode: archive_only`.
+- **Estructura fija del slug / URL**: Los slugs deben terminar obligatoriamente en `-dia-{N}` (ej. `decompilando-en-358-dias-dia-1`).
+- **Regla estricta de no auto-publicación**: El agente **NUNCA** publicará automáticamente entradas. La revisión y el botón de publicación final los pulsa **única y manualmente Carlos** desde el panel web de Buttondown (`https://buttondown.com/emails`).
+

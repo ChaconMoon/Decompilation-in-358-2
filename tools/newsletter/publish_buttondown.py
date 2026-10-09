@@ -2,13 +2,14 @@
 """
 tools/newsletter/publish_buttondown.py
 
-Publicador automatizado de entradas del diario en Buttondown como borradores (drafts).
-Lee la API Key desde el archivo .env o la variable BUTTONDOWN_API_KEY.
+Sube entradas del diario a Buttondown como borradores (drafts) para revisión manual.
+- Slugs configurados automáticamente para terminar en -dia-N.
+- Modo archival_mode: archive_only (al publicarse manualmente en la web, no envía emails).
+- NUNCA publica automáticamente: solo el autor pulsa 'Publish' desde el panel web.
 
 Uso:
-    python3 tools/newsletter/publish_buttondown.py --dia 1
-    python3 tools/newsletter/publish_buttondown.py --archivo docs/diario/dia-1.md
-    python3 tools/newsletter/publish_buttondown.py --dia 1 --status draft
+    python3 tools/newsletter/publish_buttondown.py --dia 13
+    python3 tools/newsletter/publish_buttondown.py --archivo docs/diario/dia-13.md
 """
 
 import argparse
@@ -46,27 +47,15 @@ def get_api_key():
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
-        description="Publica una entrada del diario en Buttondown como borrador."
+        description="Sube una entrada del diario a Buttondown como borrador (draft) para revisión manual."
     )
     parser.add_argument("--dia", type=int, help="Número de día del diario (ej: 1)")
     parser.add_argument("--archivo", type=str, help="Ruta al archivo Markdown")
-    parser.add_argument(
-        "--status",
-        type=str,
-        default="draft",
-        choices=["draft", "about_to_send"],
-        help="Estado del email en Buttondown (default: draft)",
-    )
-    parser.add_argument(
-        "--solo-web",
-        action="store_true",
-        help="Publica el artículo exclusivamente en el archivo web público sin enviar correos a los suscriptores.",
-    )
     return parser.parse_args()
 
 
-def extract_metadata_and_body(content):
-    """Extrae título, tags y compila Markdown a HTML semántico compatible con Buttondown."""
+def extract_metadata_and_body(content, dia_num=None):
+    """Extrae título, tags, slug y compila Markdown a HTML semántico compatible con Buttondown."""
     import markdown
 
     lines = content.splitlines()
@@ -75,6 +64,14 @@ def extract_metadata_and_body(content):
         if line.startswith("# "):
             subject = line[2:].strip()
             break
+
+    # Si no se pasó dia_num, intentar extraerlo del asunto o del texto
+    if dia_num is None:
+        dia_match = re.search(r"Dia\s+(\d+)", subject, re.IGNORECASE)
+        if dia_match:
+            dia_num = int(dia_match.group(1))
+
+    slug = f"decompilando-en-358-dias-dia-{dia_num}" if dia_num is not None else None
 
     tags = []
     tags_match = re.search(r"### Tags:\s*\n([^\n#]*#.*)", content)
@@ -116,41 +113,58 @@ def extract_metadata_and_body(content):
     # 5. Compilar a HTML limpio
     html_output = markdown.markdown(body_md, extensions=["extra", "sane_lists"])
 
-    return subject, tags, html_output
+    return subject, tags, html_output, slug
 
 
-def publish_to_buttondown(api_key, subject, body, tags, status="draft", solo_web=False):
-    """Envía el email a la API de Buttondown. Si solo_web es True, se publica sin enviar correo."""
+def upload_draft_to_buttondown(api_key, subject, body, tags, slug=None):
+    """
+    Sube o actualiza la entrada en Buttondown estrictamente como BORRADOR (draft).
+    Configura archival_mode: archive_only para que, al publicarse manualmente desde la web,
+    no envíe correos electrónicos a los suscriptores. NUNCA publica de forma automática.
+    """
     headers = {
         "Authorization": f"Token {api_key}",
         "Content-Type": "application/json",
         "User-Agent": "Decomp358-Publisher/1.0",
     }
 
+    # 1. Comprobar si ya existe un borrador con ese slug para actualizarlo (PATCH) en lugar de duplicarlo
+    existing_id = None
+    if slug:
+        try:
+            req = urllib.request.Request(f"{BUTTONDOWN_API_URL}?status=draft", headers=headers)
+            with urllib.request.urlopen(req) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                for item in data.get("results", []):
+                    if item.get("slug") == slug:
+                        existing_id = item.get("id")
+                        break
+        except Exception:
+            pass
+
     payload = {
         "subject": subject,
         "body": body,
-        "status": status,
+        "status": "draft",
+        "archival_mode": "archive_only",
     }
-    if solo_web:
-        payload["archival_mode"] = "archive_only"
+    if slug:
+        payload["slug"] = slug
 
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(BUTTONDOWN_API_URL, data=data, headers=headers, method="POST")
+
+    if existing_id:
+        url = f"{BUTTONDOWN_API_URL}/{existing_id}"
+        req = urllib.request.Request(url, data=data, headers=headers, method="PATCH")
+        action = "actualizado"
+    else:
+        req = urllib.request.Request(BUTTONDOWN_API_URL, data=data, headers=headers, method="POST")
+        action = "creado"
 
     try:
         with urllib.request.urlopen(req) as resp:
             resp_data = json.loads(resp.read().decode("utf-8"))
-            
-            # Si se solicitó publicar exclusivamente en la web, ejecutar la transición de publicación
-            if solo_web:
-                email_id = resp_data.get("id")
-                publish_url = f"{BUTTONDOWN_API_URL}/{email_id}/publish"
-                pub_req = urllib.request.Request(publish_url, data=json.dumps({}).encode("utf-8"), headers=headers, method="POST")
-                with urllib.request.urlopen(pub_req) as pub_resp:
-                    resp_data = json.loads(pub_resp.read().decode("utf-8"))
-                    
-            return resp_data
+            return resp_data, action
     except urllib.error.HTTPError as e:
         error_body = e.read().decode("utf-8")
         print(f"❌ Error HTTP {e.code} desde Buttondown: {error_body}", file=sys.stderr)
@@ -168,10 +182,15 @@ def main():
         print("❌ Error: No se encontró BUTTONDOWN_API_KEY en .env ni en las variables de entorno.")
         sys.exit(1)
 
+    dia_num = args.dia
     if args.archivo:
         target_path = Path(args.archivo)
-    elif args.dia is not None:
-        target_path = DIARIO_DIR / f"dia-{args.dia}.md"
+        if dia_num is None:
+            match = re.search(r"dia-(\d+)\.md", target_path.name)
+            if match:
+                dia_num = int(match.group(1))
+    elif dia_num is not None:
+        target_path = DIARIO_DIR / f"dia-{dia_num}.md"
     else:
         print("❌ Error: Debes especificar --dia [N] o --archivo [ruta].")
         sys.exit(1)
@@ -182,33 +201,27 @@ def main():
 
     print(f"📖 Leyendo entrada: {target_path.relative_to(REPO_ROOT)}")
     content = target_path.read_text(encoding="utf-8")
-    subject, tags, body = extract_metadata_and_body(content)
+    subject, tags, body, slug = extract_metadata_and_body(content, dia_num=dia_num)
 
     print(f"📬 Asunto: '{subject}'")
     print(f"🏷️ Tags: {tags}")
-    if args.solo_web:
-        print("🌐 Modo: Publicación EXCLUSIVA EN WEB (sin enviar emails a suscriptores)...")
-    else:
-        print(f"🚀 Enviando a Buttondown con estado: '{args.status}'...")
+    if slug:
+        print(f"🔗 Slug configurado: '{slug}' (termina en -dia-{dia_num})")
+    print("📝 Subiendo a Buttondown en modo BORRADOR (draft)...")
 
-    result = publish_to_buttondown(api_key, subject, body, tags, status=args.status, solo_web=args.solo_web)
+    result, action = upload_draft_to_buttondown(api_key, subject, body, tags, slug=slug)
 
     email_id = result.get("id", "Desconocido")
-    slug = result.get("slug", "")
-    public_url = result.get("absolute_url", f"https://buttondown.com/chaconmoon/archive/{slug}/")
+    res_slug = result.get("slug", slug or "")
 
-    if args.solo_web:
-        print("\n🎉 ¡Publicación en la web completada con éxito!")
-        print(f"   🆔 ID: {email_id}")
-        print(f"   🌐 Estado: Publicado en archivo web (Sin envíos por correo)")
-        print(f"   🔗 URL Pública en vivo: {public_url}")
-    else:
-        print("\n✅ ¡Borrador creado exitosamente en Buttondown!")
-        print(f"   🆔 ID: {email_id}")
-        print(f"   🔗 Estado: {result.get('status', 'draft')}")
-        if slug:
-            print(f"   📝 Slug: {slug}")
-        print(f"   👉 Puedes revisarlo en tu panel de Buttondown: https://buttondown.com/emails")
+    print(f"\n✅ ¡Borrador {action} exitosamente en Buttondown!")
+    print(f"   🆔 ID: {email_id}")
+    print(f"   📌 Estado: draft (Borrador protegido)")
+    print(f"   🌐 Archival Mode: archive_only (Al publicarse solo irá a la web, sin emails)")
+    print(f"   🔗 Slug: {res_slug}")
+    print(f"   🌐 URL futura al publicar: https://buttondown.com/chaconmoon/archive/{res_slug}/")
+    print(f"\n👉 Revisa y pulsa 'Publish' manualmente cuando quieras desde:")
+    print(f"   https://buttondown.com/emails")
 
 
 if __name__ == "__main__":
