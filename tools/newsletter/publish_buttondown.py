@@ -61,7 +61,9 @@ def parse_arguments():
 
 
 def extract_metadata_and_body(content):
-    """Extrae título, tags y adapta rutas de imágenes locales a GitHub raw."""
+    """Extrae título, tags y compila Markdown a HTML semántico compatible con Buttondown."""
+    import markdown
+
     lines = content.splitlines()
     subject = "Diario de decompilación"
     for line in lines:
@@ -75,19 +77,41 @@ def extract_metadata_and_body(content):
         tag_line = tags_match.group(1)
         tags = [t.lstrip("#") for t in re.findall(r"#([\w-]+)", tag_line)]
 
-    # Transformar rutas relativas de imágenes locales a raw de GitHub para que carguen en el correo
-    transformed_content = re.sub(
+    # 1. Eliminar título h1 redundante del cuerpo (Buttondown ya lo muestra como asunto del email)
+    body_md = re.sub(r"^# .*\n+", "", content)
+
+    # 2. Transformar rutas relativas de imágenes a URLs públicas raw de GitHub
+    body_md = re.sub(
         r'src="\./diario-images/([^"]+)"',
         rf'src="{GITHUB_RAW_BASE}diario-images/\1"',
-        content,
+        body_md,
     )
-    transformed_content = re.sub(
+    body_md = re.sub(
         r'!\[(.*?)\]\(\./diario-images/([^)]+)\)',
         rf'![\1]({GITHUB_RAW_BASE}diario-images/\2)',
-        transformed_content,
+        body_md,
     )
 
-    return subject, tags, transformed_content
+    # 3. Transformar checkboxes de GFM a elementos visuales universales para email
+    body_md = re.sub(r"^- \[x\] ", "- ✅ ", body_md, flags=re.M)
+    body_md = re.sub(r"^- \[ \] ", "- ⬜ ", body_md, flags=re.M)
+
+    # 4. Formatear tags como badges elegantes
+    def format_tags(match):
+        tags_str = match.group(1).strip()
+        found_tags = re.findall(r"#([\w-]+)", tags_str)
+        badges = [
+            f'<span style="background:#eef2ff; color:#3730a3; padding:3px 10px; border-radius:12px; font-family:sans-serif; font-size:0.85em; margin-right:6px; display:inline-block;">#{t}</span>'
+            for t in found_tags
+        ]
+        return "### Tags:\n\n" + " ".join(badges)
+
+    body_md = re.sub(r"### Tags:\s*\n([^\n]+)", format_tags, body_md)
+
+    # 5. Compilar a HTML limpio
+    html_output = markdown.markdown(body_md, extensions=["extra", "sane_lists"])
+
+    return subject, tags, html_output
 
 
 def publish_to_buttondown(api_key, subject, body, tags, status="draft"):
