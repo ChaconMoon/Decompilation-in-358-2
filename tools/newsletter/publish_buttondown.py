@@ -57,6 +57,11 @@ def parse_arguments():
         choices=["draft", "about_to_send"],
         help="Estado del email en Buttondown (default: draft)",
     )
+    parser.add_argument(
+        "--solo-web",
+        action="store_true",
+        help="Publica el artículo exclusivamente en el archivo web público sin enviar correos a los suscriptores.",
+    )
     return parser.parse_args()
 
 
@@ -114,8 +119,8 @@ def extract_metadata_and_body(content):
     return subject, tags, html_output
 
 
-def publish_to_buttondown(api_key, subject, body, tags, status="draft"):
-    """Envía el borrador a la API de Buttondown."""
+def publish_to_buttondown(api_key, subject, body, tags, status="draft", solo_web=False):
+    """Envía el email a la API de Buttondown. Si solo_web es True, se publica sin enviar correo."""
     headers = {
         "Authorization": f"Token {api_key}",
         "Content-Type": "application/json",
@@ -127,6 +132,8 @@ def publish_to_buttondown(api_key, subject, body, tags, status="draft"):
         "body": body,
         "status": status,
     }
+    if solo_web:
+        payload["archival_mode"] = "archive_only"
 
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(BUTTONDOWN_API_URL, data=data, headers=headers, method="POST")
@@ -134,6 +141,15 @@ def publish_to_buttondown(api_key, subject, body, tags, status="draft"):
     try:
         with urllib.request.urlopen(req) as resp:
             resp_data = json.loads(resp.read().decode("utf-8"))
+            
+            # Si se solicitó publicar exclusivamente en la web, ejecutar la transición de publicación
+            if solo_web:
+                email_id = resp_data.get("id")
+                publish_url = f"{BUTTONDOWN_API_URL}/{email_id}/publish"
+                pub_req = urllib.request.Request(publish_url, data=json.dumps({}).encode("utf-8"), headers=headers, method="POST")
+                with urllib.request.urlopen(pub_req) as pub_resp:
+                    resp_data = json.loads(pub_resp.read().decode("utf-8"))
+                    
             return resp_data
     except urllib.error.HTTPError as e:
         error_body = e.read().decode("utf-8")
@@ -170,18 +186,29 @@ def main():
 
     print(f"📬 Asunto: '{subject}'")
     print(f"🏷️ Tags: {tags}")
-    print(f"🚀 Enviando a Buttondown con estado: '{args.status}'...")
+    if args.solo_web:
+        print("🌐 Modo: Publicación EXCLUSIVA EN WEB (sin enviar emails a suscriptores)...")
+    else:
+        print(f"🚀 Enviando a Buttondown con estado: '{args.status}'...")
 
-    result = publish_to_buttondown(api_key, subject, body, tags, status=args.status)
+    result = publish_to_buttondown(api_key, subject, body, tags, status=args.status, solo_web=args.solo_web)
 
     email_id = result.get("id", "Desconocido")
     slug = result.get("slug", "")
-    print("\n✅ ¡Borrador creado exitosamente en Buttondown!")
-    print(f"   🆔 ID: {email_id}")
-    print(f"   🔗 Estado: {result.get('status', 'draft')}")
-    if slug:
-        print(f"   📝 Slug: {slug}")
-    print(f"   👉 Puedes revisarlo en tu panel de Buttondown: https://buttondown.com/emails")
+    public_url = result.get("absolute_url", f"https://buttondown.com/chaconmoon/archive/{slug}/")
+
+    if args.solo_web:
+        print("\n🎉 ¡Publicación en la web completada con éxito!")
+        print(f"   🆔 ID: {email_id}")
+        print(f"   🌐 Estado: Publicado en archivo web (Sin envíos por correo)")
+        print(f"   🔗 URL Pública en vivo: {public_url}")
+    else:
+        print("\n✅ ¡Borrador creado exitosamente en Buttondown!")
+        print(f"   🆔 ID: {email_id}")
+        print(f"   🔗 Estado: {result.get('status', 'draft')}")
+        if slug:
+            print(f"   📝 Slug: {slug}")
+        print(f"   👉 Puedes revisarlo en tu panel de Buttondown: https://buttondown.com/emails")
 
 
 if __name__ == "__main__":
