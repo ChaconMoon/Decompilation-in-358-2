@@ -103,10 +103,7 @@ Con esto he terminado el proyecto, listo para testearlo al día siguiente.
 Seguiré contando, jeje. ¡Nos vemos en la siguiente entrada del blog!
 
 ### Checklist:
-- [x] Implementar la función de intercambio mediante punteros: `change_pointers(float *a, float *b)`.
-- [x] Extender el intercambio a filas completas de una matriz 2D: `swap_rows(float *row_a, float *row_b, int cols)`.
-- [x] Crear el algoritmo de ordenamiento `reorder_matrix_by_time` sobre la columna de tiempos.
-- [x] Implementar `calculate_ranking` acoplando ID de misión con su mejor tiempo.
+- [x] Implementar correctamente funciones que accedan a punteros dentro de matrices.
 
 ### Tags:
 #DecompilandoEn358Dias #C #Matrices #Punteros #RowMajor #Runlog

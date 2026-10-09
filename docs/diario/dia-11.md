@@ -11,7 +11,7 @@
 
 ---
 
-## Modularización en C, intentando simular la programación orientada a objetos
+## Modularización en C: organizando el código sin clases
 
 Si hay algo característico de C es que no permite la programación orientada a objetos, es decir, es todo programación estructurada: el código se organiza en funciones e instrucciones secuenciales sin clases. Mantener un software de 30k o 40k líneas en un solo archivo sería imposible; para ello se recurre a la modularidad con los ficheros `.c` y `.h`.
 
@@ -21,7 +21,7 @@ En `main.c` llamo a `runlog.h` y al momento de compilar se copia totalmente en e
 
 Cuando se compila `runlog.c`, recibe las mismas indicaciones de las cabeceras, implementa esas funciones y se crea `runlog.o`, es decir, el binario compilado.
 
-Luego entra en juego el *linker*: este programa coge ambos archivos de objeto y dice: *"Vale, esta función `swap_rows()` de `runlog.o` es la que necesita `main.o`"*, rellenando los huecos que se dejó la compilación de `main.o`.
+Luego entra en juego el *linker*: este programa coge ambos archivos de objeto y dice: *"Vale, esta función `calculate_ranking()` de `runlog.o` es la que necesita `main.o`"*, rellenando los huecos que se dejó la compilación de `main.o`.
 
 Esto es lo que he aprendido después de interminables quebraderos de cabeza, pero espero que este esfuerzo merezca la pena.
 
@@ -41,12 +41,8 @@ Con esto termina la introducción a la newsletter, tendréis noticias mías pró
 
 
 ### Checklist:
-- [x] Blindar `calculate_averange` contra división por cero cuando `valid_attemps == 0` (evitando `NaN` en coma flotante IEEE 754).
-- [x] Refactorizar `max_streak` como máquina de estados pura: saltar centinelas `-1` (`continue`), corregir sentido de comparación para speedrunning (`< last_attempt`) y ordenar ramas de salida.
-- [x] Blindar `calculate_ranking` para excluir misiones sin intentos válidos y compactar la memoria contigua de `bests_times` con el puntero/índice destino `valid_missions`.
-- [x] Arquitectura modular en C: creación de `src/runlog.h` con *Include Guards*, separación de `src/runlog.c` (cálculo) y `src/main.c` (interfaz interactiva).
-- [x] Configuración del `Makefile` para compilación multi-archivo con `-Wall -Wextra -Werror` y regla automatizada `make test`.
-- [x] Implementación de suite de tests unitarios con `<assert.h>` y sanitizers (`-fsanitize=address,undefined`) en `test/test_runlog.c`.
+- [x] Dividir el proyecto runlog en submódulos para facilitar su comprensión.
+- [x] Empezar a testear el módulo de runlog.
 
 ### Tags:
 #DecompilandoEn358Dias #C #UnitTesting #AddressSanitizer #Modularidad #CleanCode
