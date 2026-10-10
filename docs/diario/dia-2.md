@@ -24,6 +24,7 @@ Por último, como programador quiero agradecer por vivir en una época en la que
 ### Checklist:
 
 #### Guia de Beej para la programación en C
+
 - [x] Capitulo 1. Introducción.
 - [x] Capitulo 2. Hello World.
 - [x] Capitulo 3. Variables y Control de flujo.

@@ -1,68 +1,49 @@
-# Diario de aprendiendo a decompilar en 358/2 dias - Dia 12: (Newaletter (parte 1))
+# Diario de aprendiendo a decompilar en 358/2 dias - Dia 12: (Newsletter (parte 1))
 
 ### Info:
 - **Fecha**: 8 de Octubre de 2026
-- **Objetivo general de la sesión**: Pipeline de extracción y descompresión de Yo-kai Watch 2 (3DS), arquitectura de newsletter y pulido de entradas.
+- **Objetivo general de la sesión**: Empezar a planificar la fase 2 del proyecto y seguir desarrollando la newsletter
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
 <img src="./diario-images/day-12.png" width="100%" alt="day-12 card">
 
 ---
 
-## 🧠 Conceptos Clave de Arquitectura e Ingeniería Inversa
+## Empezando a escribir la newsletter
 
-### 1. La Arquitectura de Nintendo 3DS frente a Nintendo DS
-- **Hardware y CPU**:
-  - Mientras que Nintendo DS se basa en un procesador ARM946E-S (arquitectura ARMv5TE a 67 MHz), Nintendo 3DS incorpora un procesador principal **ARM11 MPCore (arquitectura ARMv6K a 268 MHz)** de doble núcleo, con un ARM9 subordinado a tareas de seguridad y compatibilidad.
-- **Sinergia en Calling Conventions (AAPCS)**:
-  - Pese al salto de generación, ambas arquitecturas siguen el estándar **AAPCS (ARM Architecture Procedure Call Standard)**:
-    - Argumentos de funciones: pasan en `r0`-`r3`.
-    - Valor de retorno: viaja en `r0`.
-    - Registros `r4`-`r11`: preservados por la función llamada mediante la pila (`push`/`pop` o `stmfd`/`ldmfd`).
-    - Registros especiales: `sp` (`r13`, Stack Pointer), `lr` (`r14`, Link Register) y `pc` (`r15`, Program Counter).
-  - Los fundamentos de memoria, punteros y structs que estamos aprendiendo en C son **directamente aplicables** al análisis del ejecutable de 3DS.
+En este día ya he decidido qué estructura va a seguir la newsletter, la misma que tiene esta entrada:
 
-### 2. Pipeline de Binarios en 3DS (GodMode9 → ExeFS → `.code` → `code.raw.bin`)
-- Una ROM de 3DS (`.3ds` / `.cia`) almacena el código ejecutable en la partición **ExeFS**.
-- El archivo ejecutable principal es `.code` (comprimido con FastLZSS / BLZ invertido de Nintendo).
-- Al descomprimir `.code` (4.42 MB), el ejecutable se expande a **7.38 MB (7.737.344 bytes)** cargado en la dirección virtual base **`0x00100000`** para ARM11.
-- La presencia de cadenas de la biblioteca Rogue Wave (`RWSTDERR`) confirma la compilación con **ARM Compiler (RVCT / `armcc`)**.
-- Este proyecto queda formalmente preparado y en reposo para retomarse con la decompilación activa cuando alcancemos la **Fase 2**.
+Info: Resumen de la sesión, con fecha y demás, una especie de resumen rápido.
 
-### 3. Modelo Editorial Híbrido (Bitácora Interna vs Publicación en Substack)
-- **Desacoplamiento**: El diario en `docs/diario/dia-XX.md` sirve como registro técnico atómico diario de 15–45 min sin fricción.
-- **Publicación consolidada**: La newsletter en Substack se alimenta de estas entradas para generar ensayos técnicos semanales o por hitos completados, aportando valor formativo real a la comunidad sin riesgo de saturación.
+(Imagen de cabecera)
+
+(Anécdota y resumen de la sesión)
+
+(Checklist)
+
+(Tags)
+
+Esta estructura es obligatoria y tengo a Antigravity revisando que todas las entradas tengan esta estructura.
+
+Mi idea es escribir un sistema universal que pueda llevar a cualquier sitio que admita meterle un fichero Markdown —que no son precisamente pocos—. Originalmente tenía pensado Substack, pero no me termina de convencer, así que probaré otras.
+
+Mi idea es publicar de forma retroactiva todas y luego seguir por ahí, aunque me preocupa el formato: estas entradas de texto son muy densas y quiero hacerlas lo más legibles posible, así que no me extrañaría reestructurar entradas de forma retroactiva.
+
+## Planificando la fase 2
+
+Adicionalmente estoy empezando a planear mi banco de pruebas para la fase 2 del proyecto, en el que haré una prueba de decompilar parte de un software, aunque de eso hablaré más en profundidad más adelante.
+
+Aunque bueno, lo podéis ver en el repo, creo que es un reto que me queda grande, pero no es mi intención decompilar el juego entero, sino que había pensado en algún Mario y Luigi.
+
+Espero que el reto no me quede grande, lo veremos en su momento.
+
+Nos vemos jeje.
 
 ### Checklist:
-- [x] Integración de Yo-kai Watch 2: Mentespectros (3DS) en la hoja de ruta y contexto de proyecto.
-- [x] Implementación del pipeline de extracción en `tools/extract_rom.py` y `Makefile`.
-- [x] Extracción y descompresión verificada de `.code` (4.42 MB) a `extracted/code.raw.bin` (7.38 MB ARM11 @ `0x00100000`).
-- [x] Cálculo y registro del SHA-256 oficial e inspección de símbolos del motor de Level-5.
-- [x] Definición de la línea editorial híbrida y desarrollo de `tools/newsletter/export_substack.py`.
-- [x] Creación, revisión y pulido de la entrada del Día 1 con su tarjeta gráfica.
+
+- [x] Empezar la implementación del sistema universal de notas en Markdown
+- [x] Extracción de datos del juego de 3DS para su posterior análisis (De momento solo en el equipo local, posteriormente se hará un reto aparte)
 
 ### Tags:
+
 #DecompilandoEn358Dias #Nintendo3DS #ARM11 #FastLZSS #YokaiWatch2 #ReverseEngineering #Newsletter
-
----
-
-## 📝 Mis Notas y Reflexiones (Espacio para editar)
-*(Escribe aquí tus conclusiones personales antes de la siguiente sesión)*
-
-- 
-
----
-
-## 🚀 Próximos Pasos (Planificación para el Día 13)
-- [ ] **Arranque del Bloque 0.2 de C (Cadenas y Memoria)**:
-  - Resolver **0.2.1**: Arrays de caracteres y demostración práctica del terminador nulo `\0` en `fase-0-fundamentos-c/drills/cap07-strings/`.
-  - Resolver **0.2.2**: Implementar `mi_strlen()` y `mi_strcmp()` mediante aritmética de punteros `const char *s`.
-- [ ] **Revisión y Lanzamiento de la Newsletter**: Pulir las entradas acumuladas del diario con el objetivo de publicar la primera edición completa de cara al Día 13.
-- [ ] *(Fase 2 - En pausa hasta alcanzar la fase)*: Análisis estático de `code.raw.bin` y primeros scratches en decomp.me.
-
----
-
-## 📦 Commit de GitHub
-```text
-Day-12: Pipeline de decompilación para Yo-kai Watch 2 (3DS) en Fase 2, descompresión de .code y newsletter
-```

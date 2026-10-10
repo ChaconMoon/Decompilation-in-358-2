@@ -116,9 +116,9 @@ Al entregar el feedback de un borrador, el agente responderá con este esquema c
 
 ---
 
-## 5. Protocolo de Publicación en Plataforma Web (Buttondown)
+## 5. Publicación Nativa en GitHub
 
-- **Subida exclusivamente como borrador (`draft`)**: El script [`tools/newsletter/publish_buttondown.py`](file:///mnt/data/3-Programming/Decompilation%20in%20358-2/tools/newsletter/publish_buttondown.py) sube las entradas siempre con `status: draft` y `archival_mode: archive_only`.
-- **Estructura fija del slug / URL**: Los slugs deben terminar obligatoriamente en `-dia-{N}` (ej. `decompilando-en-358-dias-dia-1`).
-- **Regla estricta de no auto-publicación**: El agente **NUNCA** publicará automáticamente entradas. La revisión y el botón de publicación final los pulsa **única y manualmente Carlos** desde el panel web de Buttondown (`https://buttondown.com/emails`).
+- **Medio Oficial de Publicación**: Las entradas del diario se publican y leen directamente en el repositorio de GitHub dentro de `docs/diario/dia-XX.md`.
+- **Formato**: GitHub Flavored Markdown con enlaces relativos a imágenes en `diario-images/` y enlaces a archivos del repositorio.
+- **Flujo de Trabajo**: Revisión de borrador en el diario, commit atómico y push al repositorio remoto.
 

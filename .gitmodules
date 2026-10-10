@@ -1,0 +1,3 @@
+[submodule "fase-2-matching-decomp/yokai-watch-2-decompiled"]
+	path = fase-2-matching-decomp/yokai-watch-2-decompiled
+	url = git@github.com:ChaconMoon/yokai-watch-2-decompiled.git

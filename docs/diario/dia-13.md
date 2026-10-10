@@ -1,19 +1,22 @@
-# Diario de aprendiendo a decompilar en 358/2 dias - Dia 13: (Puesta a punto y lanzamiento de la newsletter)
+# Diario de aprendiendo a decompilar en 358/2 dias - Dia 13: (Newsletter (parte 2))
 
 ### Info:
 - **Fecha**: 9 de Octubre de 2026
-- **Objetivo general de la sesión**: Estandarización del blog de desarrollo, creación de la skill devlog-reviewer y preparación del lanzamiento en Substack.
+- **Objetivo general de la sesión**: Estandarización del blog de desarrollo, creación de la skill devlog-reviewer y preparación del lanzamiento.
 - **Fase**: Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 
 <img src="./diario-images/day-13.png" width="100%" alt="day-13 card">
 
-*(Escribe aquí tus reflexiones, vivencias y conclusiones de la jornada...)*
+## Revisando y probando la newsletter
+
+Llegó el día de publicar la newsletter y a lo largo de la jornada he probado múltiples opciones. Al final Substack no me vale, no tiene una API con la que pueda interactuar, así que mientras revisaba las entradas de los días 10 y 11 le he pedido a Antigravity un prototipo para publicar en Buttondown, con resultados buenos aunque he tenido que iterar mucho. He conseguido lo que quería, pero lo único que no me convence es que, al ser un ancho tan corto, da la impresión de que es mucho más texto del que es realmente y no me termina de gustar. Al día siguiente barajaré otras alternativas.
+
+Esto ha sido todo; hoy no hay novedades de programación puesto que he estado únicamente con el diario de desarrollo.
 
 ### Checklist:
-- [x] Crear e integrar la nueva skill `devlog-reviewer` para auditar el blog sin perder la voz personal.
-- [x] Estandarizar la cabecera canónica (`Diario de aprendiendo a decompilar en 358/2 dias`) en todas las entradas.
-- [x] Actualizar el hashtag oficial a `#DecompilandoEn358Dias` en todo el proyecto.
+
+- [x] Probar el sistema de publicación automática en Buttondown
 - [x] Reordenar y pulir los artículos de los Días 10 y 11 listos para publicar.
 
 ### Tags:
-#DecompilandoEn358Dias #Newsletter #Substack #DevlogReviewer #CleanCode
+#DecompilandoEn358Dias #Newsletter #DevlogReviewer
