@@ -21,6 +21,28 @@ Cuando se compila `runlog.c`, recibe las mismas indicaciones de las cabeceras, i
 
 Luego entra en juego el *linker*: este programa coge ambos archivos de objeto y dice: *"Vale, esta función `calculate_ranking()` de `runlog.o` es la que necesita `main.o`"*, rellenando los huecos que se dejó la compilación de `main.o`.
 
+```mermaid
+flowchart TD
+    subgraph Headers["📁 Cabeceras (.h)"]
+        H["runlog.h<br/>(Declaraciones y Prototipos)"]
+    end
+
+    subgraph TranslationUnits["📄 Código Fuente (.c)"]
+        MC["main.c"]
+        RC["runlog.c"]
+    end
+
+    H -.->|#include copia cabecera| MC
+    H -.->|#include copia cabecera| RC
+
+    MC -->|GCC compila a objeto| MO["main.o<br/>(Código binario con referencias pendientes)"]
+    RC -->|GCC compila a objeto| RO["runlog.o<br/>(Implementaciones en binario)"]
+
+    MO --> Linker["🔗 Linker (ld)"]
+    RO --> Linker
+    Linker --> Exec["🚀 Ejecutable Final (runlog)"]
+```
+
 Esto es lo que he aprendido después de interminables quebraderos de cabeza, pero espero que este esfuerzo merezca la pena.
 
 ## Testing en C

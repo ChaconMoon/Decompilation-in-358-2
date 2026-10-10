@@ -13,6 +13,15 @@
 
 En este día ya he decidido qué estructura va a seguir la newsletter, la misma que tiene esta entrada:
 
+```mermaid
+graph TD
+    A["📑 Entrada de Diario (.md)"] --> B["1. Info: (Fecha, Objetivo, Fase)"]
+    A --> C["2. 🖼️ Tarjeta Gráfica (day-XX.png)"]
+    A --> D["3. 📝 Reflexión y Momento Técnico (RAM / CPU / Retos)"]
+    A --> E["4. ✅ Checklist: (Micro-objetivos alcanzados)"]
+    A --> F["5. 🏷️ Tags: (#DecompilandoEn358Dias...)"]
+```
+
 Info: Resumen de la sesión, con fecha y demás, una especie de resumen rápido.
 
 (Imagen de cabecera)
@@ -32,6 +41,15 @@ Mi idea es publicar de forma retroactiva todas y luego seguir por ahí, aunque m
 ## Planificando la fase 2
 
 Adicionalmente estoy empezando a planear mi banco de pruebas para la fase 2 del proyecto, en el que haré una prueba de decompilar parte de un software, aunque de eso hablaré más en profundidad más adelante.
+
+```mermaid
+flowchart LR
+    ROM["🎮 Cartucho 3DS<br/>(NCSD .3ds)"] --> Part0["📦 Partición 0<br/>(NCCH Aplicación)"]
+    Part0 --> ExeFS["📁 ExeFS<br/>(code.bin 4.42 MB)"]
+    ExeFS --> Decomp["🔄 Descompresión<br/>FastLZSS / BLZ"]
+    Decomp --> Raw["🎯 code.raw.bin<br/>(7.38 MB ARM11)"]
+    Raw --> RAM["🧠 RAM CTR<br/>@ 0x00100000"]
+```
 
 Aunque bueno, lo podéis ver en el repo, creo que es un reto que me queda grande, pero no es mi intención decompilar el juego entero, sino que había pensado en algún Mario y Luigi.
 
