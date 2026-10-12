@@ -2,6 +2,8 @@
 
 La **Fase 4** es la culminación de tu viaje. Aquí aplicarás todo lo aprendido: el conocimiento de C a bajo nivel, la comprensión de repositorios decomp y las habilidades de gráficos con SDL para entender, compilar y modificar el proyecto **`khdays-port`** (el source port nativo de *Kingdom Hearts 358/2 Days* mantenido por Yokimitsuro).
 
+**Estado actual:** Fase futura. El port nativo y sus modificaciones se estudiarán después de completar los fundamentos, documentar una decompilación y construir el visor SDL de la Fase 3.
+
 ---
 
 ## Bloque 4.1: Anatomía de un Source Port Moderno

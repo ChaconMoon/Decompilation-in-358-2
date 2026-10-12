@@ -2,6 +2,8 @@
 
 La **Fase 1** marca tu entrada al mundo de la ingeniería inversa aplicada y a la comprensión de cómo se estructuran los proyectos de decompilación colaborativos modernos (bajo el estándar de [decomp.dev](https://decomp.dev/)).
 
+**Estado actual:** Fase preparada, pero todavía sin análisis técnico documentado. El próximo hito es incorporar una referencia de lectura y redactar el primer informe en `fase-1-lectura-decomp/analisis/`.
+
 ---
 
 ## Bloque 1.1: Ecosistema y Estructura de Proyectos

@@ -18,3 +18,8 @@
 # Python cache
 __pycache__/
 *.pyc
+
+# Borradores personales y notas de referencia (excluidos del repo)
+docs/borradores/
+borradores/
+drafts/

@@ -46,6 +46,11 @@
   - Herramientas de análisis: Ghidra / IDA Pro / Capstone (ARMv6K), `ctrtool`, scripts Python para desempaquetado de formatos de Level-5.
   - Sinergia pedagógica: `khdays-decomp` (NDS) actúa como el laboratorio guiado y maduro de referencia, mientras que *Yo-kai Watch 2* es el proyecto pionero donde Carlos aplica de forma práctica cada lección.
 
+### 4. Plataforma de Entrenamiento Interactivo: [Decomp Academy](https://decomp-academy.dev/)
+- **Origen y Recomendación**: Recomendada directamente por Yokimitsuro (creador de `khdays-decomp`). Creada por Jack Price-Burns (líder de la decompilación de *Star Fox Adventures*).
+- **Rol en el reto**: Gimnasio interactivo en navegador ("Dojo de Matching") para practicar matching decompilation progresivo con feedback inmediato y sin fricción de configuración.
+- **Conexión técnica clave**: Corre lecciones evaluadas en vivo con el compilador original **Metrowerks CodeWarrior** (`mwcceppc`), cuya heurística interna de asignación de registros, orden de declaración de variables, desdoble de bucles y optimización *peephole* es homóloga a la de `mwccarm 3.0 build 139` usado en *Kingdom Hearts 358/2 Days*.
+
 ---
 
 ## 🎯 Objetivos del Reto

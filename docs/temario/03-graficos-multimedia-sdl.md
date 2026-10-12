@@ -2,6 +2,8 @@
 
 La **Fase 3** te enseña la tecnología necesaria para construir un **Source Port**: cómo tomar el código de un juego que originalmente dependía de los chips gráficos de una consola y adaptarlo para que se ejecute en un ordenador moderno con una ventana gráfica, sonido y controles.
 
+**Estado actual:** Fase futura. Se abordará después de consolidar el análisis de decompilaciones y el flujo básico de *matching*. El primer objetivo práctico será un visor SDL pequeño y autónomo, no todavía un port completo.
+
 ---
 
 ## Bloque 3.1: Arquitectura de SDL (SDL2 y SDL3)

@@ -7,6 +7,7 @@ Este documento es tu **tablero de mando diario**. Aplica la filosofía de **Háb
 ## Índice de Fases
 
 - [Fase 0 · Cimientos de C y Memoria de Bajo Nivel](#fase-0--cimientos-de-c-y-memoria-de-bajo-nivel)
+  - [Dojo de Matching (Decomp Academy · Entrenamiento Transversal)](#dojo-de-matching-decomp-academy--entrenamiento-transversal)
 - [Fase 1 · Lectura y Anatomía de Decompilaciones Reales](#fase-1--lectura-y-anatomía-de-decompilaciones-reales)
 - [Fase 2 · Matching Decompilation (El Arte del 100% Match)](#fase-2--matching-decompilation-el-arte-del-100-match)
 - [Fase 3 · Librerías Gráficas y Multimedia con SDL](#fase-3--librerías-gráficas-y-multimedia-con-sdl)
@@ -16,6 +17,15 @@ Este documento es tu **tablero de mando diario**. Aplica la filosofía de **Háb
 
 ## Fase 0 · Cimientos de C y Memoria de Bajo Nivel
 > Guía detallada: [docs/temario/00-fundamentos-c-y-memoria.md](temario/00-fundamentos-c-y-memoria.md)
+
+### Dojo de Matching (Decomp Academy · Entrenamiento Transversal)
+- [x] **0.D.1 (Primer Match en GBA Warm Up)** Completar todo el apartado *Warm Up / Foundations* de Game Boy Advance en Decomp Academy (Thumb assembly, convención AAPCS con retornos y argumentos en `r0`, operaciones aritméticas y literal pools con `agbcc`). ¡Múltiples **100% byte-matches** conseguidos!
+- [ ] **0.D.2 (Aritmética y Constantes)** Completar bloque *Arithmetic* en Decomp Academy (sumas, restas, operandos invertidos, potencias de 2 optimizadas como shifts y división recíproca).
+- [ ] **0.D.3 (Álgebra de Bits)** Completar bloque *Bitwise* en Decomp Academy (máscaras AND, flags OR/XOR, shifts lógicos vs aritméticos y empaquetado de campos de bits).
+- [ ] **0.D.4 (Control de Flujo)** Completar bloque *Control Flow* en Decomp Academy (booleanos, saltos condicionales, clamps branchless con máscaras, guard clauses y switches).
+- [ ] **0.D.5 (Bucles y Optimización)** Completar bloque *Loops* en Decomp Academy (`for` vs `while` vs `do-while`, strength reduction de variables de inducción y bucles decrecientes).
+- [ ] **0.D.6 (Punteros y Structs)** Completar bloques *Pointers* y *Structs* en Decomp Academy (desreferenciación, arrays en memoria, padding, offsets de campos y punteros a funciones).
+- [ ] **0.D.7 (Convenciones de Llamada y ABI)** Completar bloque *ABI & Calling Conventions* en Decomp Academy (paso de argumentos en registros, registros preservados *callee-saved*, funciones *leaf* y stack frames).
 
 ### Bloque 0.1: Repaso y Cierre de Fundamentos (Estado: 100% Completado ✅)
 - [x] **0.1.1** Instalar GCC, Make y configurar `.vscode/tasks.json` en Linux.
@@ -97,9 +107,10 @@ Este documento es tu **tablero de mando diario**. Aplica la filosofía de **Háb
 - [ ] **2.1.3** Estudiar la convención AAPCS: los primeros 4 argumentos entran en `r0`-`r3`, los retornos en `r0`, y `r4`-`r11` se preservan en el stack.
 
 ### Bloque 2.2: Cadena de Herramientas de Matching
-- [ ] **2.2.1** Crear una cuenta en **decomp.me** y explorar un scratch público de Nintendo DS o GBA.
-- [ ] **2.2.2** Descargar y configurar **objdiff** en Linux para comparar archivos de objeto compilados localmente (`.o`).
-- [ ] **2.2.3** Interpretar la salida del diff: diferencias en registros (amarillo), diferencias en instrucciones (rojo/verde) y desplazamientos en el stack.
+- [ ] **2.2.1** Entrenar heurísticas de optimización en **Decomp Academy** (orden de declaración de variables, peephole optimizations y alineación de stack).
+- [ ] **2.2.2** Crear una cuenta en **decomp.me** y explorar un scratch público de Nintendo DS o GBA.
+- [ ] **2.2.3** Descargar y configurar **objdiff** en Linux para comparar archivos de objeto compilados localmente (`.o`).
+- [ ] **2.2.4** Interpretar la salida del diff: diferencias en registros (amarillo), diferencias en instrucciones (rojo/verde) y desplazamientos en el stack.
 
 ### Bloque 2.3: Técnicas de Matching y Primer 100% Match
 - [ ] **2.3.1** Crear un scratch propio en decomp.me con una función sencilla de biblioteca o lógica matemática de GBA/NDS.

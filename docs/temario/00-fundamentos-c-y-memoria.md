@@ -2,6 +2,8 @@
 
 Bienvenido a la **Fase 0**. Esta fase sienta las bases indispensables de programación antes de tocar un desensamblador. En decompilación y desarrollo de videojuegos para consolas retro, C no es un lenguaje de programación de alto nivel abstracto: **es una forma humana de estructurar bytes y punteros sobre la memoria RAM física**.
 
+**Estado actual:** Bloque 0.1 completado. El siguiente objetivo es el Bloque 0.2: cadenas, `struct`, enumeraciones y alineación de memoria.
+
 ---
 
 ## Bloque 0.1: Repaso y Cierre de Fundamentos
@@ -16,11 +18,13 @@ Bienvenido a la **Fase 0**. Esta fase sienta las bases indispensables de program
    - Aprendizaje: Iteración sobre arrays de floats, cálculo de `sizeof` con `%zu`, condicionales para umbrales de alerta.
 2. **Módulo de Calificación (`proyectos/p2-calificacion`)** [Completado]:
    - Aprendizaje: Comparación de respuestas de candidatos con plantilla usando `switch`, penalizaciones y omisiones.
-3. **Runlog (`proyectos/p3-runlog`)** [En curso - Hito final]:
-   - **Misión 0.1.13**: Completar `calculate_averange` descartando los intentos marcados con `-1`.
-   - **Misión 0.1.14**: Completar `calculate_ranking` usando un array auxiliar de índices sin alterar los datos originales.
-   - **Misión 0.1.15**: Implementar `intercambiar(float *a, float *b)` y el ordenamiento de burbuja.
-   - **Misión 0.1.16**: Compilación limpia con `-Wall -Wextra -Werror`.
+3. **Runlog (`proyectos/p3-runlog`)** [Completado]:
+   - **Misión 0.1.13**: Implementar `calculate_averange` descartando los intentos marcados con `-1`.
+   - **Misión 0.1.14**: Implementar `calculate_ranking` usando un array auxiliar de índices sin alterar los datos originales.
+   - **Misión 0.1.15**: Implementar el intercambio de filas mediante punteros y ordenar los datos asociados.
+   - **Misión 0.1.16**: Verificar una compilación limpia con `-Wall -Wextra -Werror`.
+
+El Bloque 0.1 queda validado con los ejercicios de fundamentos, los proyectos de sensores y calificación, y el proyecto `runlog`. La continuación natural es trabajar con datos compuestos en el Bloque 0.2.
 
 ---
 
@@ -85,3 +89,11 @@ Escribirás un programa que abra un archivo `.nds` y lea su cabecera oficial:
 - Bytes 0x0C..0x0F: Código del juego (ej. `YKGP` para KH 358/2 Days versión europea).
 - Bytes 0x14: Capacidad del cartucho (expresada en potencia de 2).
 - Bytes 0x6C..0x6D: Checksum de la cabecera.
+
+---
+
+## 🥋 Práctica Transversal: El Dojo de Matching (Decomp Academy)
+Recomendado por **Yokimitsuro** (creador de `khdays-decomp`). La plataforma [decomp-academy.dev](https://decomp-academy.dev/) actúa como entrenamiento complementario continuo de 10 a 15 minutos en paralelo a la Fase 0:
+- **Paso a paso**: Te presenta fragmentos reales de ensamblador y te reta a escribir la función C equivalente.
+- **Compilador real**: Evalúa tu código en vivo con **Metrowerks CodeWarrior**, el mismo motor de optimización que compila *Kingdom Hearts 358/2 Days* (`mwccarm`).
+- **Mapeo pedagógico**: Mientras en Fase 0 aprendemos conceptos de C con GCC y Make, en Decomp Academy comprobamos de inmediato cómo CodeWarrior distribuye variables en registros (`r3`/`r4`), optimiza saltos y empaqueta constantes.
