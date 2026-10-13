@@ -79,6 +79,7 @@ For this reason, and many more, all my progress on this project will be public i
 ### General Documentation
 
 - [Project context](./docs/contexto-proyecto.md): Goals, hardware specifications, and overall challenge vision.
+- [AI usage policy (English)](./docs/AI-use-policy.MD) · [(Spanish original)](./docs/politica-uso-IA.MD): Transparent statement on the learning role of AI.
 - [Learning roadmap](./docs/ROADMAP.md): Atomic checklist and daily task tracking.
 - [Development diary](./docs/diario/): Daily devlog entries with Mermaid architecture diagrams.
 - [Learning methodology](./docs/methodology.md): Atomic habits and 4-step learning cycle.
