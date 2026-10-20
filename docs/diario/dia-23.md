@@ -111,23 +111,23 @@ src
 Ahora las funciones se decompilan dentro del módulo que les corresponde:
 
 1. **CTR-SDK: El SDK de Nintendo, las librerías de software de la 3DS.**
-        - SVC: Las llamadas al kernel.
-        - NN::OS: El subsistema de Nintendo.
-        - NN::Y2R: Librería de conversión de YUV a RGB.
-        - NN::NDM: Demonio de gestión de redes.
-        - NN::NEX: El motor de red de Nintendo.
-        - CTR/CRT: El arranque a bajo nivel.
+   - SVC: Las llamadas al kernel.
+   - NN::OS: El subsistema de Nintendo.
+   - NN::Y2R: Librería de conversión de YUV a RGB.
+   - NN::NDM: Demonio de gestión de redes.
+   - NN::NEX: El motor de red de Nintendo.
+   - CTR/CRT: El arranque a bajo nivel.
 2. **Engine: El motor de juego de Level-5, es decir las librerías del motor de juego.**
-        - LFW: El framework de Level-5.
-        - LXP: Librería crossplatform de Level-5.
-        - CORE: El núcleo de servicios del motor.
+   - LFW: El framework de Level-5.
+   - LXP: Librería crossplatform de Level-5.
+   - CORE: El núcleo de servicios del motor.
 3. **Game: El juego como tal, lo referente a la programación del juego.**
-        - ywCLoopRPG: Exploración del mundo abierto (Mapas de Floridablanca / Vellón)
-        - ywCLoopBattle: Sistema de combate.
-        - ywCLoopMenu: Menús del Yokai Pad.
-        - ywCLoopOgreTime: Minijuego de la pesadilla Oni (Gargantuo, Cazamentires, Demoniorco)
-        - ywCLoopWatchmap: El uso del reloj en el mapa de navegación.
-        - ywCLoopQR: El escáner de códigos QR.
+   - ywCLoopRPG: Exploración del mundo abierto (Mapas de Floridablanca / Vellón)
+   - ywCLoopBattle: Sistema de combate.
+   - ywCLoopMenu: Menús del Yokai Pad.
+   - ywCLoopOgreTime: Minijuego de la pesadilla Oni (Gargantuo, Cazamentires, Demoniorco)
+   - ywCLoopWatchmap: El uso del reloj en el mapa de navegación.
+   - ywCLoopQR: El escáner de códigos QR.
 
 Mi objetivo es decompilar y documentar cada uno de estos módulos con un objetivo claro, si yo no lo entiendo, no sirve, es decir no quiero soltar el código de Yokai Watch 2 y decir, ale, disfrutadlo, quiero asegurarme de que sea fácil trabajar con él aunque me lleve más esfuerzo.
 
@@ -136,6 +136,7 @@ Aunque para ello inevitablemente voy a tener que usar IA, este proyecto es invia
 Aunque aún no he decidido a partir de qué punto dejaré de hacer una decompilación manual a una asistida, me quería proponer alguna meta simbólica, viendo que llevo el 1% o el 5% del código decompilado, o a conseguir decompilar algún módulo en específico, por ejemplo el LFW o el NN::OS, aunque reconozco que me tienta ser capaz de comprender algo del juego como tal, pero para ello necesito decompilar el CTR y el Engine.
 
 Deseadme suerte, estoy muy ilusionado por lo que puedo llegar a conseguir con esta ayuda, aunque me tire semanas, aunque sí que preferiría hacerlo algo más tranquilo y hacerlo sin estresarme mucho, ahora por ejemplo me consume demasiado tiempo, tal vez asistido por IA podría ir más rápido.
+
 ---
 
 ## El orden dentro del caos: separando mis notas y la IA
