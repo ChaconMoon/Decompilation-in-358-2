@@ -23,3 +23,6 @@ __pycache__/
 docs/borradores/
 borradores/
 drafts/
+
+# Proyectos privados / laboratorios locales (excluidos del repo público)
+fase-2-matching-decomp/rhythm-thief-decompiled/
